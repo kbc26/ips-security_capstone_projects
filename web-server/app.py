@@ -177,10 +177,10 @@ def index():
 @app.route("/login", methods=["POST"])
 def login():
 
-    data = request.get_json()
+    if request.method == "POST":
+    	username = request.form.get("username", "").strip()
+    	password = request.form.get("password", "").strip()
 
-    username = data.get("username", "").strip()
-    password = data.get("password", "").strip()
 
     client_ip = get_client_ip()
 
